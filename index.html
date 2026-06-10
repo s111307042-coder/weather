@@ -1,0 +1,276 @@
+  <!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>天氣預報</title>
+
+<style>
+.current-weather{
+    margin-top:20px;
+}
+
+.temperature{
+    font-size:64px;
+    font-weight:200;
+    line-height:1;
+}
+
+.condition{
+    font-size:18px;
+    color:#666;
+    margin-top:8px;
+}
+
+.weather-details{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:15px;
+    flex-wrap:wrap;
+    color:#888;
+    font-size:14px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;
+}
+
+body{
+    background:white;
+    color:#111;
+}
+
+header{
+    text-align:center;
+    padding:30px 20px;
+}
+
+h1{
+    font-size:36px;
+    font-weight:300;
+    margin-bottom:10px;
+}
+
+.city{
+    font-size:18px;
+    color:#666;
+}
+
+.hero{
+    width:95%;
+    max-width:1400px;
+    margin:20px auto;
+}
+
+.hero img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+.hero-info{
+    text-align:center;
+    padding:15px;
+}
+
+.hero-info h2{
+    font-size:24px;
+    margin-bottom:5px;
+}
+
+.hero-info p{
+    color:#666;
+    margin:3px 0;
+}
+
+.week-slider{
+    display:flex;
+    justify-content:center;
+    overflow-x:auto;
+    gap:15px;
+    padding:20px;
+}
+
+.week-slider::-webkit-scrollbar{
+    display:none;
+}
+
+.day-card{
+    flex:0 0 120px;
+    cursor:pointer;
+    text-align:center;
+}
+
+.day-card img{
+    width:100px;
+    height:75px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.day-card p{
+    margin-top:8px;
+    font-size:14px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#999;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<body>
+
+<header>
+
+<h1>天氣預報</h1>
+
+<div class="city">台北市</div>
+
+<div class="current-weather">
+
+<div id="mainDay" style="font-size:22px;margin-bottom:10px;">
+星期一
+</div>
+
+<div id="mainTemperature" class="temperature">
+32°C
+</div>
+
+<div id="mainWeather" class="condition">
+晴天 ☀️
+</div>
+
+<div class="weather-details">
+
+<span id="mainFeels">體感 35°C</span>
+
+<span id="mainRain">降雨 10%</span>
+
+<span id="mainHumidity">濕度 70%</span>
+
+<span id="mainWind">風速 3m/s</span>
+
+</div>
+
+</div>
+
+</header>
+
+<div class="hero">
+<img id="mainPhoto" src="photo1.jpg">
+</div>
+
+<div class="week-slider">
+
+<div class="day-card"
+onclick="changeWeather('photo1.jpg','星期一','32°C','晴天 ☀️','35°C','10%','70%','3m/s')">
+<img src="photo1.jpg">
+<p>星期一</p>
+<p>☀️</p>
+<p>32°</p>
+</div>
+
+<div class="day-card"
+onclick="changeWeather('photo2.jpg','星期二','30°C','多雲 ⛅','32°C','20%','75%','4m/s')">
+<img src="photo2.jpg">
+<p>星期二</p>
+<p>⛅</p>
+<p>30°</p>
+</div>
+
+<div class="day-card"
+onclick="changeWeather('photo3.jpg','星期三','26°C','雨天 🌧️','28°C','80%','92%','5m/s')">
+<img src="photo3.jpg">
+<p>星期三</p>
+<p>🌧️</p>
+<p>26°</p>
+</div>
+
+<div class="day-card"
+onclick="changeWeather('photo4.jpg','星期四','33°C','晴天 ☀️','36°C','5%','65%','2m/s')">
+<img src="photo4.jpg">
+<p>星期四</p>
+<p>☀️</p>
+<p>33°</p>
+</div>
+
+<div class="day-card"
+onclick="changeWeather('photo5.jpg','星期五','30°C','晴天 ☀️','33°C','10%','72%','3m/s')">
+<img src="photo5.jpg">
+<p>星期五</p>
+<p>☀️</p>
+<p>30°</p>
+</div>
+
+<div class="day-card"
+onclick="changeWeather('photo6.jpg','星期六','33°C','晴天 ☀️','35°C','5%','68%','2m/s')">
+<img src="photo6.jpg">
+<p>星期六</p>
+<p>☀️</p>
+<p>33°</p>
+</div>
+
+<div class="day-card"
+onclick="changeWeather('photo7.jpg','星期日','31°C','晴天 ☀️','34°C','15%','74%','3m/s')">
+<img src="photo7.jpg">
+<p>星期日</p>
+<p>☀️</p>
+<p>31°</p>
+</div>
+
+</div>
+
+<footer>
+天氣預報
+</footer>
+
+<script>
+
+function changeWeather(
+photo,
+day,
+temp,
+weather,
+feels,
+rain,
+humidity,
+wind
+){
+
+document.getElementById("mainPhoto").src = photo;
+
+document.getElementById("mainDay").innerText = day;
+
+document.getElementById("mainTemperature").innerText = temp;
+
+document.getElementById("mainWeather").innerText = weather;
+
+document.getElementById("mainFeels").innerText = "體感 " + feels;
+
+document.getElementById("mainRain").innerText = "降雨 " + rain;
+
+document.getElementById("mainHumidity").innerText = "濕度 " + humidity;
+
+document.getElementById("mainWind").innerText = "風速 " + wind;
+
+}
+
+</script>
+
+</body>
+
+</body>
+</html>
